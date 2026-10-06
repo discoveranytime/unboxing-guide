@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Film a Package Unboxing — Clear Evidence, Start to Finish</title>
+<script>try{var __t=localStorage.getItem('unbox-theme');if(__t==='light')document.documentElement.setAttribute('data-theme','light');}catch(e){}</script>
+<style>
+*{box-sizing:border-box; margin:0; padding:0}
+:root{
+  --bg:#090b0f; --bg2:#0e1117; --card:#12161e; --card2:#0c0f15;
+  --line:#242c39; --line2:#2e3746;
+  --text:#f2f5f9; --muted:#9aa6b8; --faint:#6b7688;
+  --violet:#a78bfa; --fuchsia:#e879f9; --cyan:#22d3ee;
+  --accent:var(--violet); --radius:16px;
+}
+[data-theme="light"]{
+  --bg:#eceff4; --bg2:#e0e6ee; --card:#ffffff; --card2:#f0f4f9;
+  --line:#d2dae6; --line2:#c0c9d8;
+  --text:#17222f; --muted:#4d5d74; --faint:#8494ab;
+}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{animation:none!important; transition:none!important} }
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background:var(--bg); color:var(--text); line-height:1.65; font-size:16px; overflow-x:hidden;
+  background-image:radial-gradient(1100px 520px at 12% -5%, #a78bfa14 0%, transparent 60%),
+                   radial-gradient(900px 480px at 95% 8%, #22d3ee10 0%, transparent 55%);
+}
+[data-theme="light"] body{background-image:radial-gradient(1100px 520px at 12% -5%, #7c3aed12 0%, transparent 60%),radial-gradient(900px 480px at 95% 8%, #0e749012 0%, transparent 55%)}
+::selection{background:#a78bfa55}
+#progress{position:fixed; top:0; left:0; right:0; height:3px; z-index:300; pointer-events:none}
+#progressFill{height:100%; width:0; background:linear-gradient(90deg,var(--violet),var(--fuchsia),var(--cyan)); border-radius:0 3px 3px 0}
+#bg-dots{position:fixed; inset:0; z-index:0; pointer-events:none}
+.shell{display:flex; min-height:100vh; position:relative; z-index:1}
+.sidebar{
+  position:fixed; top:0; left:0; bottom:0; width:252px; z-index:100;
+  background:rgba(10,12,16,.94); backdrop-filter:blur(10px); border-right:1px solid var(--line);
+  display:flex; flex-direction:column; padding:24px 16px; gap:6px;
+  transition:transform .32s ease, background-color .45s ease, border-color .45s ease;
+}
+[data-theme="light"] .sidebar{background:rgba(236,239,244,.94)}
+.side-brand{display:flex; align-items:center; gap:10px; font-weight:800; font-size:16px; padding:2px 8px 18px}
+.side-brand .drop{width:32px; height:32px; border-radius:10px; display:inline-flex; align-items:center; justify-content:center; background:linear-gradient(135deg,var(--violet),var(--fuchsia)); font-size:17px; flex:0 0 auto}
+.sidenav{display:flex; flex-direction:column; gap:4px; position:relative}
+.side-indicator{position:absolute; left:-16px; top:0; width:4px; height:40px; border-radius:2px; background:linear-gradient(180deg,var(--violet),var(--fuchsia)); box-shadow:0 0 12px #a78bfa88; opacity:0; transition:top .38s cubic-bezier(.2,.7,.2,1), height .38s cubic-bezier(.2,.7,.2,1), opacity .3s ease; pointer-events:none}
+.sidenav a{display:flex; align-items:center; gap:12px; color:var(--muted); text-decoration:none; font-size:14px; font-weight:600; padding:10px 12px; border-radius:10px; border:1px solid transparent}
+.sidenav a .n{font-size:11px; font-weight:800; color:var(--faint); background:#ffffff0c; border-radius:6px; padding:3px 7px; flex:0 0 auto}
+.sidenav a:hover{color:var(--text); background:#ffffff0c}
+.sidenav a.active{color:var(--text); background:#a78bfa14; border-color:#a78bfa44}
+.sidenav a.active .n{color:var(--violet); background:#a78bfa22}
+[data-theme="light"] .sidenav a:hover{background:rgba(20,35,60,.06)}
+.side-foot{margin-top:auto; display:flex; align-items:center; gap:10px; padding:8px}
+.side-foot span{font-size:12.5px; color:var(--faint); font-weight:600}
+.side-progress{padding:16px 10px 6px; margin-top:12px; border-top:1px solid var(--line)}
+.sp-head{display:flex; justify-content:space-between; align-items:baseline; font-size:11px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:var(--faint); margin-bottom:8px}
+.sp-head #sidePct{color:var(--violet); font-size:13px; letter-spacing:0}
+.sp-bar{height:6px; border-radius:3px; background:#ffffff10; overflow:hidden}
+.sp-bar #sideFill{display:block; height:100%; width:0; background:linear-gradient(90deg,var(--violet),var(--fuchsia)); border-radius:3px}
+[data-theme="light"] .sp-bar{background:rgba(20,35,60,.09)}
+.theme-btn{width:40px; height:40px; border-radius:50%; border:1px solid var(--line); background:#ffffff0c; color:var(--text); font-size:18px; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; transition:opacity .5s ease, transform .25s ease, background-color .4s ease}
+.theme-btn:hover{transform:scale(1.1)}
+.theme-btn.dim{opacity:.32}
+.theme-btn.dim:hover{opacity:1}
+.menu-btn{position:fixed; top:12px; left:12px; z-index:190; width:42px; height:42px; border-radius:12px; background:rgba(10,12,16,.88); backdrop-filter:blur(8px); border:1px solid var(--line); color:var(--text); font-size:18px; cursor:pointer; display:none; align-items:center; justify-content:center}
+.side-backdrop{position:fixed; inset:0; background:#000a; z-index:150; opacity:0; pointer-events:none; transition:opacity .3s ease}
+body.side-open .side-backdrop{opacity:1; pointer-events:auto}
+main{flex:1; min-width:0; padding-left:252px}
+.wrap{max-width:1060px; margin:0 auto; padding:0 32px}
+.mrail{display:none; position:sticky; top:0; z-index:90; background:rgba(10,12,16,.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); overflow-x:auto; scrollbar-width:none; padding:10px 16px; gap:8px}
+[data-theme="light"] .mrail{background:rgba(236,239,244,.92)}
+.mrail::-webkit-scrollbar{display:none}
+.mrail a{flex:0 0 auto; color:var(--muted); text-decoration:none; font-size:12.5px; font-weight:700; padding:7px 12px; border-radius:999px; border:1px solid var(--line); white-space:nowrap}
+.mrail a.active{color:#14101f; background:linear-gradient(135deg,var(--violet),var(--fuchsia)); border-color:transparent}
+.hero{padding:72px 0 26px; position:relative}
+.kicker{display:inline-block; font-size:12px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:var(--violet); border:1px solid #a78bfa55; background:#a78bfa12; padding:8px 16px; border-radius:999px; margin-bottom:20px}
+h1{font-size:clamp(38px,5.4vw,64px); line-height:1.05; letter-spacing:-1.5px; font-weight:900; margin-bottom:16px}
+h1 .grad{background:linear-gradient(92deg,var(--violet),var(--fuchsia) 55%,var(--cyan)); -webkit-background-clip:text; background-clip:text; color:transparent}
+[data-theme="light"] h1 .grad{background:linear-gradient(92deg,#6d28d9,#c026d3 55%,#0e7490); -webkit-background-clip:text; background-clip:text; color:transparent}
+.hero p.lead{font-size:18px; color:var(--muted); max-width:62ch}
+.hero p.lead strong{color:var(--text)}
+.excite{position:relative; display:flex; gap:18px; align-items:center; border-radius:var(--radius); padding:22px 26px; margin:8px 0 4px; background:linear-gradient(180deg,var(--card),var(--card2)); overflow:hidden}
+.excite::before{content:""; position:absolute; inset:0; border-radius:var(--radius); padding:2px; background:linear-gradient(120deg,var(--violet),var(--fuchsia),var(--cyan)); -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite:xor; mask-composite:exclude; pointer-events:none}
+.excite-emoji{font-size:44px; flex:0 0 auto; animation:excite-bounce 1.6s ease-in-out infinite}
+@keyframes excite-bounce{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-8px) rotate(6deg)}}
+@media (prefers-reduced-motion: reduce){ .excite-emoji{animation:none} }
+.excite h3{font-size:22px; font-weight:900; letter-spacing:-.4px; margin-bottom:4px; background:linear-gradient(92deg,var(--violet),var(--fuchsia)); -webkit-background-clip:text; background-clip:text; color:transparent}
+[data-theme="light"] .excite h3{background:linear-gradient(92deg,#6d28d9,#c026d3); -webkit-background-clip:text; background-clip:text; color:transparent}
+.excite p{color:var(--muted); font-size:15.5px; margin:0}
+.excite p strong{color:var(--text)}
+.disclaimer{border:1px solid #a78bfa44; background:#a78bfa0d; border-radius:var(--radius); padding:18px 22px; font-size:14px; color:var(--muted); margin:26px 0}
+.disclaimer strong{color:var(--violet)}
+section.chapter{padding:40px 0 8px; scroll-margin-top:16px}
+.ch-head{display:flex; align-items:center; gap:14px; margin-bottom:6px}
+.ch-num{flex:0 0 auto; min-width:52px; height:40px; padding:0 14px; border-radius:12px; display:inline-flex; align-items:center; justify-content:center; font-weight:900; font-size:15px; color:#14101f; background:linear-gradient(135deg,var(--violet),var(--fuchsia))}
+.ch-num.cool{background:linear-gradient(135deg,var(--cyan),#0e7490); color:#06222a}
+h2{font-size:clamp(24px,3vw,32px); letter-spacing:-.6px; font-weight:800}
+.ch-sub{color:var(--muted); margin:2px 0 22px; max-width:72ch}
+.ch-sub strong{color:var(--text)}
+.card{background:linear-gradient(180deg,var(--card),var(--card2)); border:1px solid var(--line); border-radius:var(--radius); padding:24px; transition:background-color .45s ease, border-color .45s ease}
+.card h3{font-size:17px; margin-bottom:8px}
+.card p{color:var(--muted); font-size:15px; margin:8px 0}
+.card p strong, .card li strong{color:var(--text)}
+.card ul{margin:10px 0 4px 20px; color:var(--muted); font-size:15px}
+.card li{margin:6px 0}
+.grid{display:grid; gap:16px}
+.grid.c2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.grid.c3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.stepcard{display:flex; gap:16px; align-items:flex-start; padding:20px}
+.stepcard .sn{flex:0 0 44px; width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:17px; color:#14101f; background:linear-gradient(135deg,var(--violet),var(--fuchsia))}
+.stepcard h4{font-size:15.5px; margin-bottom:4px}
+.stepcard p, .stepcard ul{font-size:14px; margin:4px 0}
+.stepcard ul{margin-left:18px}
+.dont{border:1px solid #f8717144; background:#f871710c; border-radius:12px; padding:14px 18px; font-size:14.5px; color:var(--muted); margin-top:12px}
+.dont strong{color:#f87171}
+.warn{border-left:4px solid var(--fuchsia); background:#e879f90d; border-radius:0 14px 14px 0; padding:18px 22px; font-size:15.5px; color:var(--muted); margin:14px 0}
+.warn strong{color:var(--text)}
+.mistake{padding:18px; text-align:left}
+.mistake .x{font-size:22px; display:block; margin-bottom:8px}
+.mistake h4{font-size:15px; margin-bottom:4px}
+.mistake p{font-size:13.5px; margin:0}
+.check{list-style:none; margin:10px 0 4px}
+.check li{display:flex; gap:12px; margin:9px 0; color:var(--muted); font-size:14.5px; align-items:flex-start}
+.check li::before{content:"☐"; flex:0 0 auto; color:var(--violet); font-size:18px; line-height:1.4}
+.msgbox{border:1px dashed #a78bfa55; border-radius:12px; padding:18px 20px; font-size:14.5px; color:var(--muted); font-style:italic; margin-top:12px; background:#a78bfa08}
+.bigline{font-size:clamp(20px,2.6vw,26px); font-weight:800; letter-spacing:-.4px; line-height:1.45}
+.bigline .hl{background:linear-gradient(92deg,var(--violet),var(--fuchsia)); -webkit-background-clip:text; background-clip:text; color:transparent}
+.quiz{padding:0; overflow:hidden}
+.quiz-toggle{width:100%; display:flex; align-items:center; justify-content:space-between; gap:14px; background:none; border:none; color:var(--text); font:inherit; font-weight:800; font-size:17px; padding:22px 24px; cursor:pointer; text-align:left}
+.quiz-chev{flex:0 0 34px; height:34px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; background:linear-gradient(135deg,var(--violet),var(--fuchsia)); color:#14101f; font-size:22px; font-weight:800; transition:transform .25s}
+.quiz.open .quiz-chev{transform:rotate(45deg)}
+.quiz-body{display:grid; grid-template-rows:0fr; transition:grid-template-rows .32s ease}
+.quiz.open .quiz-body{grid-template-rows:1fr}
+.quiz-inner{overflow:hidden; min-height:0}
+.quiz-options{display:grid; gap:10px; padding:2px 24px 4px}
+.quiz-options button{display:flex; align-items:center; gap:12px; text-align:left; background:#ffffff08; border:1px solid var(--line); color:var(--text); padding:13px 18px; border-radius:12px; font:inherit; font-size:15.5px; font-weight:700; cursor:pointer}
+.quiz-options button small{color:var(--muted); font-weight:500; font-size:13.5px}
+.quiz-options button:hover{border-color:var(--violet)}
+.quiz-options button.picked{background:#a78bfa1c; border-color:var(--violet)}
+[data-theme="light"] .quiz-options button{background:rgba(20,35,60,.05)}
+.quiz-thanks{padding:4px 24px 0; color:var(--muted); font-size:14.5px; margin:12px 0 0}
+.quiz-thanks strong{color:var(--text)}
+.quiz-results{padding:2px 24px 24px}
+.qr-head{font-size:13.5px; color:var(--muted); margin:0 0 10px}
+#qrTotal{font-weight:700; color:var(--text)}
+.qr-row{display:grid; grid-template-columns:158px 1fr 118px; gap:12px; align-items:center; padding:7px 0; font-size:14.5px}
+.qr-label{font-weight:700; white-space:nowrap}
+.qr-bar{height:8px; border-radius:4px; background:#ffffff12; overflow:hidden}
+.qr-bar span{display:block; height:100%; width:0; background:linear-gradient(90deg,var(--violet),var(--fuchsia)); border-radius:4px; transition:width .6s ease}
+.qr-pct{color:var(--muted); font-size:13px; text-align:right; white-space:nowrap}
+[data-theme="light"] .qr-bar{background:rgba(20,35,60,.09)}
+footer{border-top:1px solid var(--line); margin-top:44px; padding:30px 0 46px; color:var(--faint); font-size:13.5px}
+footer strong{color:var(--muted)}
+.rv{opacity:0; transform:translateY(22px); transition:opacity .6s ease, transform .6s ease}
+.rv.in{opacity:1; transform:none}
+@media (prefers-reduced-motion: reduce){ .rv{opacity:1; transform:none} }
+@media (min-width:901px){ .menu-btn,.side-backdrop{display:none!important} }
+@media (max-width:900px){
+  main{padding-left:0}
+  .sidebar{transform:translateX(-106%); width:282px; z-index:200}
+  body.side-open .sidebar{transform:none}
+  .menu-btn{display:inline-flex}
+  .mrail{display:flex}
+  .wrap{padding:0 18px}
+  .hero{padding:40px 0 16px}
+  .card{padding:18px 20px}
+  .qr-row{grid-template-columns:1fr auto; row-gap:6px}
+  .qr-bar{grid-column:1/-1; grid-row:2}
+  .stepcard{padding:14px}
+}
+</style>
+</head>
+<body>
+<div id="progress" aria-hidden="true"><div id="progressFill"></div></div>
+<canvas id="bg-dots" aria-hidden="true"></canvas>
+<div class="shell">
+<aside class="sidebar" id="sidebar" aria-label="Site navigation">
+  <div class="side-brand"><span class="drop">🎥</span> Unboxing Guide</div>
+  <nav class="sidenav" id="chapternav">
+    <span class="side-indicator" id="sideIndicator" aria-hidden="true"></span>
+    <a href="#ch1"><span class="n">01</span>Why film it</a>
+    <a href="#ch2"><span class="n">02</span>Before you start</a>
+    <a href="#ch3"><span class="n">03</span>The opening</a>
+    <a href="#ch4"><span class="n">04</span>Item by item</a>
+    <a href="#ch5"><span class="n">05</span>Damage &amp; finish</a>
+    <a href="#ch6"><span class="n">06</span>Keep the original</a>
+    <a href="#ch7"><span class="n">07</span>Reporting issues</a>
+    <a href="#ch8"><span class="n">08</span>Mistakes to avoid</a>
+    <a href="#ch9"><span class="n">09</span>Master checklist</a>
+  </nav>
+  <div class="side-progress" aria-hidden="true">
+    <div class="sp-head"><span>Reading</span><span id="sidePct">0%</span></div>
+    <div class="sp-bar"><span id="sideFill"></span></div>
+  </div>
+  <div class="side-foot">
+    <button class="theme-btn" id="themeBtn" aria-label="Switch to light mode" title="Toggle light / dark">🌙</button>
+    <span>Light / dark</span>
+  </div>
+</aside>
+<button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+<div class="side-backdrop" id="sideBackdrop"></div>
+<main>
+<div class="mrail" id="mrail">
+  <a href="#ch1">01 · Why film</a><a href="#ch2">02 · Setup</a><a href="#ch3">03 · Opening</a><a href="#ch4">04 · Items</a><a href="#ch5">05 · Finish</a><a href="#ch6">06 · Keep it</a><a href="#ch7">07 · Report</a><a href="#ch8">08 · Mistakes</a><a href="#ch9">09 · Checklist</a>
+</div>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="kicker">🎥 Documentation guide</span>
+    <h1>How to film a package <span class="grad">unboxing</span></h1>
+    <p class="lead">One continuous video — <strong>sealed box to empty box</strong>. Here's how to create a clear record of what arrived and what condition it was in, so any problem is easy to prove and resolve.</p>
+  </div>
+
+  <div class="excite rv">
+    <div class="excite-emoji">🎉</div>
+    <div>
+      <h3>They're here!</h3>
+      <p>That rush when the package finally lands on your doorstep — enjoy it! But before you tear into that box, hit record. A few minutes of filming now protects everything you just spent weeks waiting for. Here's exactly how to do it right.</p>
+    </div>
+  </div>
+
+  <div class="disclaimer"><strong>📋 Educational reference only.</strong> This page teaches general documentation practices for receiving parcels. It is not legal advice and is not affiliated with any seller or carrier.</div>
+
+  <!-- 01 -->
+  <section class="chapter" id="ch1">
+    <div class="ch-head"><span class="ch-num">01</span><h2>Why film it</h2></div>
+    <p class="ch-sub">Thirty seconds of setup can save you weeks of arguing later.</p>
+    <div class="card rv">
+      <p>A proper unboxing video is a <strong>continuous record of four things</strong>: what arrived, how the package was sealed, what was inside, and the condition of everything the moment you received it.</p>
+      <p>That record becomes invaluable the moment anything is <strong>missing, incorrect, damaged, or leaking</strong>. And it establishes a timeline — sealed package → opening → contents revealed → items removed → empty box — that lets someone who wasn't there understand exactly what happened.</p>
+      <div class="warn"><strong>Without that sequence,</strong> a missing item turns into a guessing game: never packed? Wrong quantity? Opened in transit? Removed after delivery? The video doesn't answer everything by itself, but it gives any investigation a solid starting point.</div>
+    </div>
+  </section>
+
+  <!-- 02 -->
+  <section class="chapter" id="ch2">
+    <div class="ch-head"><span class="ch-num">02</span><h2>Before you start</h2></div>
+    <p class="ch-sub">Get everything ready <strong>before</strong> the box is open — there's no pause button on evidence.</p>
+    <div class="card rv">
+      <ul>
+        <li><strong>Charged device with free storage</strong> — a dead battery mid-unboxing ruins the whole point.</li>
+        <li><strong>Good lighting</strong> — labels, seals, and damage must be readable on camera.</li>
+        <li><strong>A clean, stable surface</strong> with room to lay contents out individually.</li>
+        <li><strong>Frame the package and your hands</strong> — both need to stay visible together.</li>
+        <li><strong>Film somewhere private</strong> — avoid spots where other people might wander into the recording.</li>
+      </ul>
+      <div class="dont"><strong>⛔ The golden rule:</strong> never start recording after the package is already open. The most valuable evidence is a continuous take that begins while the box is still sealed.</div>
+    </div>
+  </section>
+
+  <!-- 03 -->
+  <section class="chapter" id="ch3">
+    <div class="ch-head"><span class="ch-num">03</span><h2>The opening</h2></div>
+    <p class="ch-sub">Steps 1–4: sealed proof, steady frame, careful opening.</p>
+    <div class="grid c2">
+      <div class="card stepcard rv"><div class="sn">1</div><div><h4>Record before you cut</h4><p>Hit record <strong>before</strong> any cuts or tears. Show the whole box first: the outside, shipping labels, tracking info, tape and seals — plus any <strong>damage</strong> (dents, holes, tears, crushed corners, wet areas). Linger on damage from several angles.</p></div></div>
+      <div class="card stepcard rv"><div class="sn">2</div><div><h4>Prove it's still sealed</h4><p>Demonstrate the package hasn't been opened: sealed tape, security seals, shrink wrap, tamper-evident packing. <strong>Rotate slowly</strong> so every side gets its moment on camera.</p></div></div>
+      <div class="card stepcard rv"><div class="sn">3</div><div><h4>Keep it in frame</h4><p>From here on, the box stays on camera. Don't move it off-screen, cover it for long stretches, walk away mid-recording, pull items out of view, or switch to a second recording halfway through.</p></div></div>
+      <div class="card stepcard rv"><div class="sn">4</div><div><h4>Open normally, don't rush</h4><p>Show the inside of the box, padding, documents, and contents as first seen. If anything looks damaged, leaking, or wrong — <strong>show its condition first</strong>, before touching or rearranging it.</p></div></div>
+    </div>
+  </section>
+
+  <!-- 04 -->
+  <section class="chapter" id="ch4">
+    <div class="ch-head"><span class="ch-num cool">04</span><h2>Item by item</h2></div>
+    <p class="ch-sub">Steps 5–6: slow down — this is where the details live.</p>
+    <div class="card rv">
+      <h3>📦 One at a time</h3>
+      <p>Remove each item <strong>individually</strong> and hold it close enough that its identifying details read clearly on camera:</p>
+      <ul>
+        <li>Product name and description</li>
+        <li>Labels, quantities, lot or batch numbers</li>
+        <li>Expiration dates and packaging condition</li>
+      </ul>
+      <p>Give the camera <strong>time to focus</strong>. Small text? Bring the item closer or adjust the camera — don't just wave it past the lens.</p>
+    </div>
+    <div class="card rv" style="margin-top:16px">
+      <h3>🔢 Verify quantities</h3>
+      <p>Got several identical items? <strong>Group them together in frame</strong> so the count is undeniable — and count out loud while recording: <em>"one, two, three, four."</em></p>
+      <div class="dont"><strong>⛔ Count looks off?</strong> Don't stop recording. Finish the entire unboxing so the complete contents are documented, then deal with the discrepancy.</div>
+    </div>
+  </section>
+
+  <!-- 05 -->
+  <section class="chapter" id="ch5">
+    <div class="ch-head"><span class="ch-num">05</span><h2>Damage &amp; the finish</h2></div>
+    <p class="ch-sub">Steps 7–9: document problems, then prove the box is empty.</p>
+    <div class="grid c2">
+      <div class="card rv">
+        <h3>🔍 Document every problem</h3>
+        <p>Crushed packaging, broken containers, tears, leaks, missing labels, broken seals, wrong items, wrong quantities, moisture damage — <strong>show each one from several angles</strong> and take your time.</p>
+        <p>Keep the damaged item <strong>with its original packaging</strong> instead of throwing anything away immediately.</p>
+      </div>
+      <div class="card rv">
+        <h3>🏁 Don't stop early</h3>
+        <p>Found one problem? <strong>Keep going.</strong> There could be a second issue hiding behind the first — a missing item <em>and</em> a damaged one, for example. Only a complete video proves the full story.</p>
+      </div>
+    </div>
+    <div class="card rv" style="margin-top:16px">
+      <h3>📭 Show the empty box</h3>
+      <p>Once everything is out, film the <strong>empty interior</strong> — move packing material, inserts, and bags aside so it's obvious nothing is hiding underneath. The goal: establish on camera that the package was <strong>completely emptied during the recording</strong>.</p>
+    </div>
+  </section>
+
+  <!-- 06 -->
+  <section class="chapter" id="ch6">
+    <div class="ch-head"><span class="ch-num">06</span><h2>Keep the original</h2></div>
+    <p class="ch-sub">Step 10: your footage is only evidence if it still exists.</p>
+    <div class="card rv">
+      <p><strong>Don't delete or edit the original recording.</strong> Screenshots and trimmed clips are handy for sharing, but they're no substitute for the complete, unedited file.</p>
+      <p>Keep everything together somewhere safe:</p>
+      <ul>
+        <li>The <strong>original full-length video</strong></li>
+        <li>Photos of damage, labels, and individual items</li>
+        <li>Shipping information and tracking details</li>
+        <li>Your order confirmation or invoice</li>
+        <li>Any correspondence about the issue</li>
+      </ul>
+      <div class="warn"><strong>Edited versions are fine</strong> for sending to a seller — just never let the edited copy become the <em>only</em> copy.</div>
+    </div>
+  </section>
+
+  <!-- 07 -->
+  <section class="chapter" id="ch7">
+    <div class="ch-head"><span class="ch-num cool">07</span><h2>Reporting an issue</h2></div>
+    <p class="ch-sub">If something's wrong, report it fast — and bring receipts.</p>
+    <div class="card rv">
+      <p>Contact the seller or representative <strong>as soon as reasonably possible</strong>. Keep the message factual and concise, and include:</p>
+      <ul>
+        <li>What you received</li>
+        <li>What appears to be wrong</li>
+        <li>When the package arrived</li>
+        <li>That you filmed the <strong>complete unboxing</strong></li>
+        <li>The photos and video</li>
+        <li>Any order or shipment details they need</li>
+      </ul>
+      <p>Damage? <strong>Describe it precisely.</strong> Wrong item? State clearly <strong>what you expected</strong> versus <strong>what actually arrived</strong>.</p>
+      <div class="msgbox">"Hi — my package arrived today and one expected item seems to be missing. I filmed the complete unboxing from the sealed box to the empty box, and I've attached the video and photos. Let me know what else you need to look into this."</div>
+    </div>
+  </section>
+
+  <!-- 08 -->
+  <section class="chapter" id="ch8">
+    <div class="ch-head"><span class="ch-num">08</span><h2>Mistakes to avoid</h2></div>
+    <p class="ch-sub">Eight ways people accidentally ruin perfectly good evidence.</p>
+    <div class="grid c3">
+      <div class="card mistake rv"><span class="x">❌</span><h4>Starting after opening</h4><p>The box's original sealed condition is gone forever.</p></div>
+      <div class="card mistake rv"><span class="x">❌</span><h4>Stopping halfway</h4><p>Any gap in recording is a gap anyone can question.</p></div>
+      <div class="card mistake rv"><span class="x">❌</span><h4>Going off-camera</h4><p>What the lens never saw might as well never have happened.</p></div>
+      <div class="card mistake rv"><span class="x">❌</span><h4>Filming too far away</h4><p>Labels and quantities become unreadable mush.</p></div>
+      <div class="card mistake rv"><span class="x">❌</span><h4>Moving too fast</h4><p>Blurry fly-bys capture nothing usable.</p></div>
+      <div class="card mistake rv"><span class="x">❌</span><h4>Ditching packaging early</h4><p>Boxes and padding can hold proof of damage or tampering.</p></div>
+      <div class="card mistake rv"><span class="x">❌</span><h4>Photos only</h4><p>Still images can't show the continuous timeline a video does.</p></div>
+      <div class="card mistake rv"><span class="x">❌</span><h4>Editing the only copy</h4><p>Always keep the raw original alongside any trimmed version.</p></div>
+    </div>
+  </section>
+
+  <!-- 09 -->
+  <section class="chapter" id="ch9">
+    <div class="ch-head"><span class="ch-num">09</span><h2>Master checklist</h2></div>
+    <p class="ch-sub">Run through this every time. Future-you says thanks.</p>
+    <div class="grid c3">
+      <div class="card rv">
+        <h3>🎬 Before opening</h3>
+        <ul class="check">
+          <li>Start recording</li>
+          <li>Show the entire package</li>
+          <li>Show shipping information</li>
+          <li>Show seals and tape</li>
+          <li>Document visible damage</li>
+          <li>Camera stable and focused</li>
+        </ul>
+      </div>
+      <div class="card rv">
+        <h3>📦 During the unboxing</h3>
+        <ul class="check">
+          <li>Keep the package in frame</li>
+          <li>Open the package on camera</li>
+          <li>Show the inside packaging</li>
+          <li>Remove items individually</li>
+          <li>Show labels clearly</li>
+          <li>Verify quantities</li>
+          <li>Document damage or abnormalities</li>
+          <li>Don't pause or stop recording</li>
+        </ul>
+      </div>
+      <div class="card rv">
+        <h3>🏁 At the end</h3>
+        <ul class="check">
+          <li>Remove all contents</li>
+          <li>Show the empty package</li>
+          <li>Show all items together</li>
+          <li>Take extra photos if needed</li>
+          <li>Save the original video</li>
+          <li>Keep the original packaging</li>
+          <li>Report problems promptly</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- quiz -->
+  <section class="chapter" id="ch10">
+    <div class="ch-head"><span class="ch-num">✦</span><h2>Quick quiz</h2></div>
+    <p class="ch-sub">One question — how useful was this guide?</p>
+    <div class="card quiz rv" id="quizCard">
+      <button class="quiz-toggle" id="quizToggle" aria-expanded="false">
+        <span>How useful was this unboxing guide?</span>
+        <span class="quiz-chev" aria-hidden="true">+</span>
+      </button>
+      <div class="quiz-body">
+        <div class="quiz-inner">
+          <div class="quiz-options" id="quizOptions">
+            <button data-v="4">⭐ Very useful <small>exactly what I needed</small></button>
+            <button data-v="3">👍 Useful <small>cleared things up</small></button>
+            <button data-v="2">🙂 Okay <small>does the job</small></button>
+            <button data-v="1">😐 Not useful <small>didn't help</small></button>
+          </div>
+          <p class="quiz-thanks" id="quizThanks" hidden></p>
+          <div class="quiz-results" id="quizResults" hidden>
+            <p class="qr-head"><span id="qrTotal"></span> · <span>votes stay in this browser</span></p>
+            <div id="qrRows"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /wrap -->
+<footer>
+  <div class="wrap">
+    <div class="disclaimer"><strong>📋 Educational reference only.</strong> This page teaches general documentation practices for receiving parcels. It is not legal advice and is not affiliated with any seller or carrier.</div>
+    <p><strong>How to Film a Package Unboxing</strong> — one continuous recording, sealed box to empty box: setup, the opening sequence, item-by-item documentation, quantity checks, damage evidence, keeping the original file, reporting issues, common mistakes, and a master checklist.</p>
+  </div>
+</footer>
+</main>
+</div><!-- /shell -->
+<script>
+const $=id=>document.getElementById(id);
+const REDUCED=matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* progress: top bar + sidebar meter */
+(function(){
+  const fill=$('progressFill'), sFill=$('sideFill'), sPct=$('sidePct');
+  let tick=false;
+  function up(){
+    const h=document.documentElement, max=h.scrollHeight-h.clientHeight;
+    const pct=max>0?(h.scrollTop/max*100):0;
+    fill.style.width=pct+'%';
+    if(sFill) sFill.style.width=pct+'%';
+    if(sPct) sPct.textContent=Math.round(pct)+'%';
+    tick=false;
+  }
+  addEventListener('scroll',()=>{ if(!tick){tick=true; requestAnimationFrame(up);} },{passive:true});
+  addEventListener('resize',up); up();
+})();
+/* ambient dots: violet / fuchsia / cyan */
+(function(){
+  const c=$('bg-dots'); if(!c) return;
+  const x=c.getContext('2d');
+  const COLS=['#a78bfa','#e879f9','#22d3ee','#8b5cf6','#38bdf8'];
+  let W,H,dots=[];
+  function size(){ W=c.width=innerWidth; H=c.height=innerHeight;
+    const n=Math.max(40,Math.min(150,Math.floor(W*H/16000)));
+    dots=Array.from({length:n},()=>({
+      x:Math.random()*W, y:Math.random()*H,
+      r:1.2+Math.random()*2.2, col:COLS[Math.random()*COLS.length|0],
+      vx:(Math.random()-.5)*.22, vy:(Math.random()-.5)*.22,
+      a:.25+Math.random()*.4, ph:Math.random()*6.28, sp:.4+Math.random()*.8
+    }));
+  }
+  size(); addEventListener('resize',size);
+  let t=0;
+  (function loop(){
+    t+=.016; x.clearRect(0,0,W,H);
+    for(const d of dots){
+      d.x+=d.vx; d.y+=d.vy;
+      if(d.x<0)d.x=W; if(d.x>W)d.x=0; if(d.y<0)d.y=H; if(d.y>H)d.y=0;
+      const tw=d.a*(0.65+0.35*Math.sin(t*d.sp*2+d.ph));
+      x.globalAlpha=Math.max(0,tw); x.fillStyle=d.col;
+      x.beginPath(); x.arc(d.x,d.y,d.r,0,6.283); x.fill();
+    }
+    x.globalAlpha=1;
+    if(!REDUCED) requestAnimationFrame(loop);
+  })();
+})();
+/* sidebar drawer (mobile) */
+(function(){
+  const btn=$('menuBtn'), bd=$('sideBackdrop');
+  const close=()=>document.body.classList.remove('side-open');
+  btn.onclick=()=>document.body.classList.toggle('side-open');
+  bd.onclick=close;
+  addEventListener('keydown',e=>{ if(e.key==='Escape') close(); });
+  document.querySelectorAll('#chapternav a').forEach(a=>a.addEventListener('click',()=>{ if(innerWidth<=900) close(); }));
+})();
+/* smooth scrolling */
+let scrollAnim=null;
+function smoothTo(t){
+  const doc=document.documentElement;
+  const sy=scrollY, ey=Math.max(0,t.getBoundingClientRect().top+sy-8), d=ey-sy;
+  cancelAnimationFrame(scrollAnim);
+  if(REDUCED||Math.abs(d)<4){ scrollTo(0,ey); return; }
+  const prev=doc.style.scrollBehavior; doc.style.scrollBehavior='auto';
+  const dur=Math.min(1100,420+Math.abs(d)*.32), t0=performance.now();
+  const ez=k=>k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2;
+  const clean=()=>{ removeEventListener('wheel',ou); removeEventListener('touchmove',ou); doc.style.scrollBehavior=prev; };
+  const ou=()=>{ cancelAnimationFrame(scrollAnim); clean(); };
+  addEventListener('wheel',ou,{passive:true}); addEventListener('touchmove',ou,{passive:true});
+  function fr(now){
+    const p=Math.min(1,(now-t0)/dur);
+    scrollTo(0,sy+d*ez(p));
+    if(p<1) scrollAnim=requestAnimationFrame(fr); else clean();
+  }
+  scrollAnim=requestAnimationFrame(fr);
+}
+document.querySelectorAll('#chapternav a, .mrail a').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t) smoothTo(t);
+  });
+});
+/* scrollspy + gliding indicator */
+function moveIndicator(){
+  const nav=$('chapternav'), ind=$('sideIndicator');
+  if(!nav||!ind) return;
+  const act=nav.querySelector('a.active');
+  if(!act){ ind.style.opacity=0; return; }
+  ind.style.opacity=1;
+  ind.style.top=act.offsetTop+'px';
+  ind.style.height=act.offsetHeight+'px';
+}
+(function(){
+  const links=[...document.querySelectorAll('#chapternav a')];
+  const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+  const mlinks=[...document.querySelectorAll('.mrail a')];
+  const obs=new IntersectionObserver(es=>{
+    es.forEach(e=>{ if(e.isIntersecting){
+      const id='#'+e.target.id;
+      links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')===id));
+      mlinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')===id));
+      moveIndicator();
+    }});
+  },{rootMargin:'-40% 0px -55% 0px'});
+  secs.forEach(s=>s&&obs.observe(s));
+  addEventListener('resize',moveIndicator);
+  addEventListener('load',()=>setTimeout(moveIndicator,300));
+  setTimeout(moveIndicator,500);
+})();
+/* reveal on scroll */
+(function(){
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.1});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+})();
+/* theme */
+(function(){
+  const btn=$('themeBtn');
+  const light=()=>document.documentElement.getAttribute('data-theme')==='light';
+  const paint=()=>{ btn.textContent=light()?'☀️':'🌙'; btn.setAttribute('aria-label',light()?'Switch to dark mode':'Switch to light mode'); };
+  btn.onclick=()=>{
+    if(light()) document.documentElement.removeAttribute('data-theme');
+    else document.documentElement.setAttribute('data-theme','light');
+    try{ localStorage.setItem('unbox-theme',light()?'light':'dark'); }catch(e){}
+    paint(); btn.classList.add('dim');
+  };
+  paint();
+})();
+/* rating quiz */
+(function(){
+  const KEY='unbox-quiz-pick', VKEY='unbox-quiz-votes';
+  const OPTS=[{v:'4',icon:'⭐',label:'Very useful'},{v:'3',icon:'👍',label:'Useful'},{v:'2',icon:'🙂',label:'Okay'},{v:'1',icon:'😐',label:'Not useful'}];
+  const card=$('quizCard'), tog=$('quizToggle'), opts=$('quizOptions'), thx=$('quizThanks'),
+        res=$('quizResults'), tot=$('qrTotal'), rows=$('qrRows');
+  if(!card) return;
+  tog.onclick=()=>{ const o=card.classList.toggle('open'); tog.setAttribute('aria-expanded',String(o)); };
+  const store=(k,v)=>{ try{localStorage.setItem(k,v);}catch(e){} };
+  const pick=()=>{ try{return localStorage.getItem(KEY);}catch(e){return null;} };
+  const votes=()=>{ try{return JSON.parse(localStorage.getItem(VKEY))||{};}catch(e){return {};} };
+  function thanks(v){
+    const o=OPTS.find(x=>x.v===v);
+    thx.hidden=false;
+    thx.innerHTML='Thanks — you rated this guide <strong>'+(o?o.icon+' '+o.label:v)+'</strong>.';
+  }
+  function render(){
+    const vs=votes(), total=OPTS.reduce((s,o)=>s+(+vs[o.v]||0),0);
+    if(!total){ res.hidden=true; return; }
+    tot.textContent=total+(total===1?' total vote':' total votes');
+    rows.innerHTML=OPTS.map(o=>{
+      const c=+vs[o.v]||0, p=Math.round(c/total*100);
+      return '<div class="qr-row"><span class="qr-label">'+o.icon+' '+o.label+'</span>'+
+        '<span class="qr-bar"><span style="width:'+p+'%"></span></span>'+
+        '<span class="qr-pct">'+p+'% · '+c+' vote'+(c===1?'':'s')+'</span></div>';
+    }).join('');
+    res.hidden=false;
+  }
+  opts.querySelectorAll('button').forEach(b=>{
+    b.onclick=()=>{
+      const prev=pick(), vs=votes();
+      if(prev&&prev!==b.dataset.v) vs[prev]=Math.max(0,(+vs[prev]||0)-1);
+      if(prev!==b.dataset.v) vs[b.dataset.v]=(+vs[b.dataset.v]||0)+1;
+      store(KEY,b.dataset.v); store(VKEY,JSON.stringify(vs));
+      opts.querySelectorAll('button').forEach(x=>x.classList.toggle('picked',x.dataset.v===b.dataset.v));
+      thanks(b.dataset.v); render();
+    };
+  });
+  const s=pick();
+  if(s){ opts.querySelectorAll('button').forEach(x=>x.classList.toggle('picked',x.dataset.v===s)); thanks(s); render(); }
+})();
+</script>
+</body>
+</html>
