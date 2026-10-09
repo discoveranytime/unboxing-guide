@@ -3,102 +3,122 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How to Film a Package Unboxing — Clear Evidence, Start to Finish</title>
-<script>try{var __t=localStorage.getItem('unbox-theme');if(__t==='light')document.documentElement.setAttribute('data-theme','light');}catch(e){}</script>
+<title>How to Film an Unboxing Video Correctly — Sealed Box to Empty Box</title>
+<script>try{var __t=localStorage.getItem('unboxfilm-theme');if(__t==='light')document.documentElement.setAttribute('data-theme','light');}catch(e){}</script>
 <style>
 *{box-sizing:border-box; margin:0; padding:0}
 :root{
-  --bg:#090b0f; --bg2:#0e1117; --card:#12161e; --card2:#0c0f15;
-  --line:#242c39; --line2:#2e3746;
-  --text:#f2f5f9; --muted:#9aa6b8; --faint:#6b7688;
-  --violet:#a78bfa; --fuchsia:#e879f9; --cyan:#22d3ee;
-  --accent:var(--violet); --radius:16px;
+  --bg:#0b0908; --bg2:#100d0b; --card:#141110; --card2:#0d0b0a;
+  --line:#2a2320; --line2:#38302b;
+  --text:#f7f3f0; --muted:#a8a094; --faint:#6f675e;
+  --rose:#fb7185; --amber:#fbbf24; --cyan:#22d3ee;
+  --accent:var(--rose); --radius:16px;
 }
 [data-theme="light"]{
-  --bg:#eceff4; --bg2:#e0e6ee; --card:#ffffff; --card2:#f0f4f9;
-  --line:#d2dae6; --line2:#c0c9d8;
-  --text:#17222f; --muted:#4d5d74; --faint:#8494ab;
+  --bg:#f2efec; --bg2:#e7e2dc; --card:#ffffff; --card2:#f4f1ed;
+  --line:#d8d0c8; --line2:#c4b9ae;
+  --text:#1d1713; --muted:#5c534b; --faint:#8d8378;
 }
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{animation:none!important; transition:none!important} }
 body{
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   background:var(--bg); color:var(--text); line-height:1.65; font-size:16px; overflow-x:hidden;
-  background-image:radial-gradient(1100px 520px at 12% -5%, #a78bfa14 0%, transparent 60%),
+  background-image:radial-gradient(1100px 520px at 12% -5%, #fb718514 0%, transparent 60%),
                    radial-gradient(900px 480px at 95% 8%, #22d3ee10 0%, transparent 55%);
 }
-[data-theme="light"] body{background-image:radial-gradient(1100px 520px at 12% -5%, #7c3aed12 0%, transparent 60%),radial-gradient(900px 480px at 95% 8%, #0e749012 0%, transparent 55%)}
-::selection{background:#a78bfa55}
+[data-theme="light"] body{background-image:radial-gradient(1100px 520px at 12% -5%, #be123c12 0%, transparent 60%),radial-gradient(900px 480px at 95% 8%, #0e749012 0%, transparent 55%)}
+::selection{background:#fb718555}
 #progress{position:fixed; top:0; left:0; right:0; height:3px; z-index:300; pointer-events:none}
-#progressFill{height:100%; width:0; background:linear-gradient(90deg,var(--violet),var(--fuchsia),var(--cyan)); border-radius:0 3px 3px 0}
+#progressFill{height:100%; width:0; background:linear-gradient(90deg,var(--rose),var(--amber),var(--cyan)); border-radius:0 3px 3px 0}
 #bg-dots{position:fixed; inset:0; z-index:0; pointer-events:none}
+/* decorative background typography watermark */
+#bgtext{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.bgline{position:absolute;left:-25%;width:150%;transform:rotate(-20deg)}
+.bgtrack{display:inline-block;white-space:nowrap;animation:drift var(--spd,120s) linear infinite}
+.bgline.rev .bgtrack{animation-direction:reverse}
+.bgtrack b{font-family:inherit;font-weight:900;letter-spacing:.04em;color:transparent;
+  -webkit-text-stroke:1px var(--sc,rgba(251,113,133,.13))}
+.bgtrack i{font-style:normal;color:transparent;-webkit-text-stroke:1px rgba(168,160,148,.10);margin:0 .7em}
+.w1{--sc:rgba(251,113,133,.14)}
+.w2{--sc:rgba(251,191,36,.13)}
+@keyframes drift{to{transform:translateX(-50%)}}
+@media(max-width:900px){
+  .bgline.mhide{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .bgtrack{animation:none}
+}
 .shell{display:flex; min-height:100vh; position:relative; z-index:1}
 .sidebar{
   position:fixed; top:0; left:0; bottom:0; width:252px; z-index:100;
-  background:rgba(10,12,16,.94); backdrop-filter:blur(10px); border-right:1px solid var(--line);
+  background:rgba(12,10,9,.94); backdrop-filter:blur(10px); border-right:1px solid var(--line);
   display:flex; flex-direction:column; padding:24px 16px; gap:6px;
   transition:transform .32s ease, background-color .45s ease, border-color .45s ease;
 }
-[data-theme="light"] .sidebar{background:rgba(236,239,244,.94)}
+[data-theme="light"] .sidebar{background:rgba(242,239,236,.94)}
 .side-brand{display:flex; align-items:center; gap:10px; font-weight:800; font-size:16px; padding:2px 8px 18px}
-.side-brand .drop{width:32px; height:32px; border-radius:10px; display:inline-flex; align-items:center; justify-content:center; background:linear-gradient(135deg,var(--violet),var(--fuchsia)); font-size:17px; flex:0 0 auto}
+.side-brand .drop{width:32px; height:32px; border-radius:10px; display:inline-flex; align-items:center; justify-content:center; background:linear-gradient(135deg,var(--rose),var(--amber)); font-size:17px; flex:0 0 auto}
 .sidenav{display:flex; flex-direction:column; gap:4px; position:relative}
-.side-indicator{position:absolute; left:-16px; top:0; width:4px; height:40px; border-radius:2px; background:linear-gradient(180deg,var(--violet),var(--fuchsia)); box-shadow:0 0 12px #a78bfa88; opacity:0; transition:top .38s cubic-bezier(.2,.7,.2,1), height .38s cubic-bezier(.2,.7,.2,1), opacity .3s ease; pointer-events:none}
+.side-indicator{position:absolute; left:-16px; top:0; width:4px; height:40px; border-radius:2px; background:linear-gradient(180deg,var(--rose),var(--amber)); box-shadow:0 0 12px #fb718588; opacity:0; transition:top .38s cubic-bezier(.2,.7,.2,1), height .38s cubic-bezier(.2,.7,.2,1), opacity .3s ease; pointer-events:none}
 .sidenav a{display:flex; align-items:center; gap:12px; color:var(--muted); text-decoration:none; font-size:14px; font-weight:600; padding:10px 12px; border-radius:10px; border:1px solid transparent}
 .sidenav a .n{font-size:11px; font-weight:800; color:var(--faint); background:#ffffff0c; border-radius:6px; padding:3px 7px; flex:0 0 auto}
 .sidenav a:hover{color:var(--text); background:#ffffff0c}
-.sidenav a.active{color:var(--text); background:#a78bfa14; border-color:#a78bfa44}
-.sidenav a.active .n{color:var(--violet); background:#a78bfa22}
-[data-theme="light"] .sidenav a:hover{background:rgba(20,35,60,.06)}
+.sidenav a.active{color:var(--text); background:#fb718514; border-color:#fb718544}
+.sidenav a.active .n{color:var(--rose); background:#fb718522}
+[data-theme="light"] .sidenav a:hover{background:rgba(30,22,18,.06)}
 .side-foot{margin-top:auto; display:flex; align-items:center; gap:10px; padding:8px}
 .side-foot span{font-size:12.5px; color:var(--faint); font-weight:600}
 .side-progress{padding:16px 10px 6px; margin-top:12px; border-top:1px solid var(--line)}
 .sp-head{display:flex; justify-content:space-between; align-items:baseline; font-size:11px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:var(--faint); margin-bottom:8px}
-.sp-head #sidePct{color:var(--violet); font-size:13px; letter-spacing:0}
+.sp-head #sidePct{color:var(--rose); font-size:13px; letter-spacing:0}
 .sp-bar{height:6px; border-radius:3px; background:#ffffff10; overflow:hidden}
-.sp-bar #sideFill{display:block; height:100%; width:0; background:linear-gradient(90deg,var(--violet),var(--fuchsia)); border-radius:3px}
-[data-theme="light"] .sp-bar{background:rgba(20,35,60,.09)}
+.sp-bar #sideFill{display:block; height:100%; width:0; background:linear-gradient(90deg,var(--rose),var(--amber)); border-radius:3px}
+[data-theme="light"] .sp-bar{background:rgba(30,22,18,.09)}
 .theme-btn{width:40px; height:40px; border-radius:50%; border:1px solid var(--line); background:#ffffff0c; color:var(--text); font-size:18px; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; transition:opacity .5s ease, transform .25s ease, background-color .4s ease}
 .theme-btn:hover{transform:scale(1.1)}
 .theme-btn.dim{opacity:.32}
 .theme-btn.dim:hover{opacity:1}
-.menu-btn{position:fixed; top:12px; left:12px; z-index:190; width:42px; height:42px; border-radius:12px; background:rgba(10,12,16,.88); backdrop-filter:blur(8px); border:1px solid var(--line); color:var(--text); font-size:18px; cursor:pointer; display:none; align-items:center; justify-content:center}
+.menu-btn{position:fixed; top:12px; left:12px; z-index:190; width:42px; height:42px; border-radius:12px; background:rgba(12,10,9,.88); backdrop-filter:blur(8px); border:1px solid var(--line); color:var(--text); font-size:18px; cursor:pointer; display:none; align-items:center; justify-content:center}
 .side-backdrop{position:fixed; inset:0; background:#000a; z-index:150; opacity:0; pointer-events:none; transition:opacity .3s ease}
 body.side-open .side-backdrop{opacity:1; pointer-events:auto}
 main{flex:1; min-width:0; padding-left:252px}
 .wrap{max-width:1060px; margin:0 auto; padding:0 32px}
-.mrail{display:none; position:sticky; top:0; z-index:90; background:rgba(10,12,16,.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); overflow-x:auto; scrollbar-width:none; padding:10px 16px; gap:8px}
-[data-theme="light"] .mrail{background:rgba(236,239,244,.92)}
+.mrail{display:none; position:sticky; top:0; z-index:90; background:rgba(12,10,9,.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); overflow-x:auto; scrollbar-width:none; padding:10px 16px; gap:8px}
+[data-theme="light"] .mrail{background:rgba(242,239,236,.92)}
 .mrail::-webkit-scrollbar{display:none}
 .mrail a{flex:0 0 auto; color:var(--muted); text-decoration:none; font-size:12.5px; font-weight:700; padding:7px 12px; border-radius:999px; border:1px solid var(--line); white-space:nowrap}
-.mrail a.active{color:#14101f; background:linear-gradient(135deg,var(--violet),var(--fuchsia)); border-color:transparent}
+.mrail a.active{color:#1d1214; background:linear-gradient(135deg,var(--rose),var(--amber)); border-color:transparent}
 .hero{padding:72px 0 26px; position:relative}
-.kicker{display:inline-block; font-size:12px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:var(--violet); border:1px solid #a78bfa55; background:#a78bfa12; padding:8px 16px; border-radius:999px; margin-bottom:20px}
+.kicker{display:inline-block; font-size:12px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:var(--rose); border:1px solid #fb718555; background:#fb718512; padding:8px 16px; border-radius:999px; margin-bottom:20px}
 h1{font-size:clamp(38px,5.4vw,64px); line-height:1.05; letter-spacing:-1.5px; font-weight:900; margin-bottom:16px}
-h1 .grad{background:linear-gradient(92deg,var(--violet),var(--fuchsia) 55%,var(--cyan)); -webkit-background-clip:text; background-clip:text; color:transparent}
-[data-theme="light"] h1 .grad{background:linear-gradient(92deg,#6d28d9,#c026d3 55%,#0e7490); -webkit-background-clip:text; background-clip:text; color:transparent}
+h1 .grad{background:linear-gradient(92deg,var(--rose),var(--amber) 55%,var(--cyan)); -webkit-background-clip:text; background-clip:text; color:transparent}
+[data-theme="light"] h1 .grad{background:linear-gradient(92deg,#be123c,#b45309 55%,#0e7490); -webkit-background-clip:text; background-clip:text; color:transparent}
 .hero p.lead{font-size:18px; color:var(--muted); max-width:62ch}
 .hero p.lead strong{color:var(--text)}
 .excite{position:relative; display:flex; gap:18px; align-items:center; border-radius:var(--radius); padding:22px 26px; margin:8px 0 4px; background:linear-gradient(180deg,var(--card),var(--card2)); overflow:hidden}
-.excite::before{content:""; position:absolute; inset:0; border-radius:var(--radius); padding:2px; background:linear-gradient(120deg,var(--violet),var(--fuchsia),var(--cyan)); -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite:xor; mask-composite:exclude; pointer-events:none}
+.excite::before{content:""; position:absolute; inset:0; border-radius:var(--radius); padding:2px; background:linear-gradient(120deg,var(--rose),var(--amber),var(--cyan)); -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite:xor; mask-composite:exclude; pointer-events:none}
 .excite-emoji{font-size:44px; flex:0 0 auto; animation:excite-bounce 1.6s ease-in-out infinite}
 @keyframes excite-bounce{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-8px) rotate(6deg)}}
 @media (prefers-reduced-motion: reduce){ .excite-emoji{animation:none} }
-.excite h3{font-size:22px; font-weight:900; letter-spacing:-.4px; margin-bottom:4px; background:linear-gradient(92deg,var(--violet),var(--fuchsia)); -webkit-background-clip:text; background-clip:text; color:transparent}
-[data-theme="light"] .excite h3{background:linear-gradient(92deg,#6d28d9,#c026d3); -webkit-background-clip:text; background-clip:text; color:transparent}
+.excite h3{font-size:22px; font-weight:900; letter-spacing:-.4px; margin-bottom:4px; background:linear-gradient(92deg,var(--rose),var(--amber)); -webkit-background-clip:text; background-clip:text; color:transparent}
+[data-theme="light"] .excite h3{background:linear-gradient(92deg,#be123c,#b45309); -webkit-background-clip:text; background-clip:text; color:transparent}
 .excite p{color:var(--muted); font-size:15.5px; margin:0}
 .excite p strong{color:var(--text)}
-.disclaimer{border:1px solid #a78bfa44; background:#a78bfa0d; border-radius:var(--radius); padding:18px 22px; font-size:14px; color:var(--muted); margin:26px 0}
-.disclaimer strong{color:var(--violet)}
+.disclaimer{border:1px solid #fb718544; background:#fb71850d; border-radius:var(--radius); padding:18px 22px; font-size:14px; color:var(--muted); margin:26px 0}
+.disclaimer strong{color:var(--rose)}
 section.chapter{padding:40px 0 8px; scroll-margin-top:16px}
 .ch-head{display:flex; align-items:center; gap:14px; margin-bottom:6px}
-.ch-num{flex:0 0 auto; min-width:52px; height:40px; padding:0 14px; border-radius:12px; display:inline-flex; align-items:center; justify-content:center; font-weight:900; font-size:15px; color:#14101f; background:linear-gradient(135deg,var(--violet),var(--fuchsia))}
+.ch-num{flex:0 0 auto; min-width:52px; height:40px; padding:0 14px; border-radius:12px; display:inline-flex; align-items:center; justify-content:center; font-weight:900; font-size:15px; color:#1d1214; background:linear-gradient(135deg,var(--rose),var(--amber))}
 .ch-num.cool{background:linear-gradient(135deg,var(--cyan),#0e7490); color:#06222a}
 h2{font-size:clamp(24px,3vw,32px); letter-spacing:-.6px; font-weight:800}
 .ch-sub{color:var(--muted); margin:2px 0 22px; max-width:72ch}
 .ch-sub strong{color:var(--text)}
 .card{background:linear-gradient(180deg,var(--card),var(--card2)); border:1px solid var(--line); border-radius:var(--radius); padding:24px; transition:background-color .45s ease, border-color .45s ease}
 .card h3{font-size:17px; margin-bottom:8px}
+.check{list-style:none; margin:10px 0 4px; padding:0}
+.check li{display:flex; gap:12px; margin:9px 0; color:var(--muted); font-size:14.5px; align-items:flex-start}
+.check li::before{content:"☐"; flex:0 0 auto; color:var(--rose); font-size:18px; line-height:1.4}
 .card p{color:var(--muted); font-size:15px; margin:8px 0}
 .card p strong, .card li strong{color:var(--text)}
 .card ul{margin:10px 0 4px 20px; color:var(--muted); font-size:15px}
@@ -107,27 +127,58 @@ h2{font-size:clamp(24px,3vw,32px); letter-spacing:-.6px; font-weight:800}
 .grid.c2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
 .grid.c3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
 .stepcard{display:flex; gap:16px; align-items:flex-start; padding:20px}
-.stepcard .sn{flex:0 0 44px; width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:17px; color:#14101f; background:linear-gradient(135deg,var(--violet),var(--fuchsia))}
+.stepcard .sn{flex:0 0 44px; width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:17px; color:#1d1214; background:linear-gradient(135deg,var(--rose),var(--amber))}
 .stepcard h4{font-size:15.5px; margin-bottom:4px}
 .stepcard p, .stepcard ul{font-size:14px; margin:4px 0}
 .stepcard ul{margin-left:18px}
 .dont{border:1px solid #f8717144; background:#f871710c; border-radius:12px; padding:14px 18px; font-size:14.5px; color:var(--muted); margin-top:12px}
 .dont strong{color:#f87171}
-.warn{border-left:4px solid var(--fuchsia); background:#e879f90d; border-radius:0 14px 14px 0; padding:18px 22px; font-size:15.5px; color:var(--muted); margin:14px 0}
+.warn{border-left:4px solid var(--amber); background:#fbbf240d; border-radius:0 14px 14px 0; padding:18px 22px; font-size:15.5px; color:var(--muted); margin:14px 0}
 .warn strong{color:var(--text)}
 .mistake{padding:18px; text-align:left}
 .mistake .x{font-size:22px; display:block; margin-bottom:8px}
 .mistake h4{font-size:15px; margin-bottom:4px}
 .mistake p{font-size:13.5px; margin:0}
-.check{list-style:none; margin:10px 0 4px}
-.check li{display:flex; gap:12px; margin:9px 0; color:var(--muted); font-size:14.5px; align-items:flex-start}
-.check li::before{content:"☐"; flex:0 0 auto; color:var(--violet); font-size:18px; line-height:1.4}
-.msgbox{border:1px dashed #a78bfa55; border-radius:12px; padding:18px 20px; font-size:14.5px; color:var(--muted); font-style:italic; margin-top:12px; background:#a78bfa08}
+/* pulsating corner dots: one hue per chapter */
+.card,.gloss{position:relative}
+.card::before,.gloss::before{content:""; position:absolute; top:14px; left:14px; width:9px; height:9px; border-radius:50%; background:var(--dot,#fb7185); box-shadow:0 0 10px var(--dot,#fb7185); animation:pdot 1.8s ease-in-out infinite; z-index:2}
+@keyframes pdot{0%,100%{transform:scale(1); opacity:1}50%{transform:scale(1.4); opacity:.5}}
+@media (prefers-reduced-motion: reduce){ .card::before,.gloss::before{animation:none} }
+#ch1{--dot:#fb7185} #ch2{--dot:#fbbf24} #ch3{--dot:#22d3ee}
+#ch4{--dot:#a78bfa} #ch5{--dot:#a3e635} #ch6{--dot:#38bdf8}
+#ch7{--dot:#fb7185} #ch8{--dot:#fbbf24} #ch9{--dot:#22d3ee}
+#ch10{--dot:#a78bfa} #ch11{--dot:#a3e635}
+#ch3 .card::before, #ch9 .card::before{display:none}
+.msgbox{border:1px dashed #fb718555; border-radius:12px; padding:18px 20px; font-size:14.5px; color:var(--muted); font-style:italic; margin-top:12px; background:#fb718508}
 .bigline{font-size:clamp(20px,2.6vw,26px); font-weight:800; letter-spacing:-.4px; line-height:1.45}
-.bigline .hl{background:linear-gradient(92deg,var(--violet),var(--fuchsia)); -webkit-background-clip:text; background-clip:text; color:transparent}
+.bigline .hl{background:linear-gradient(92deg,var(--rose),var(--amber)); -webkit-background-clip:text; background-clip:text; color:transparent}
+/* ---------- glossary accordion ---------- */
+.gloss{border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; background:linear-gradient(180deg,var(--card),var(--card2))}
+.g-item{border-bottom:1px solid var(--line)}
+.g-item:last-child{border-bottom:none}
+.g-q{width:100%; background:none; border:none; color:var(--text); font:inherit; font-size:1.02rem; font-weight:700; text-align:left; padding:1.05rem 1.4rem; cursor:pointer; display:flex; justify-content:flex-start; align-items:center; gap:1rem}
+.g-q:hover{background:#ffffff08}
+.g-q .term{color:var(--rose)}
+.g-item:nth-child(3n+2) .g-q .term{color:var(--amber)}
+.g-item:nth-child(3n) .g-q .term{color:var(--cyan)}
+.g-q .plus{flex:0 0 auto; width:1.7rem; height:1.7rem; border-radius:50%; border:1px solid var(--line); margin-left:auto; display:inline-flex; align-items:center; justify-content:center; font-size:1.1rem; color:var(--muted); transition:all .3s}
+.g-item.open .g-q .plus{transform:rotate(45deg); background:linear-gradient(135deg,var(--rose),var(--amber)); color:#1d1214; border-color:transparent}
+.gthumb{flex:0 0 auto; width:42px; height:42px; border-radius:12px; border:1px solid var(--line); animation:gaFloat 5s ease-in-out infinite}
+.gthumb.v2{animation:gaBreathe 4.4s ease-in-out infinite}
+.gthumb.v3{animation:gaTilt 6s ease-in-out infinite}
+@keyframes gaFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes gaBreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+@keyframes gaTilt{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+@media (prefers-reduced-motion: reduce){ .gthumb{animation:none} }
+.g-a{max-height:0; overflow:hidden; transition:max-height .45s ease}
+.g-a .gsci{padding:0 1.4rem 1rem; color:var(--muted); font-size:.95rem}
+.g-a .gsci strong{color:var(--text)}
+.gslabel{display:block; font-size:.7rem; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:var(--faint); margin-bottom:.35rem}
+.g-a .plain{margin:0 1.4rem 1.3rem; background:#ffffff08; border:1px dashed #ffffff22; border-radius:12px; padding:1rem 1.2rem; font-size:.96rem; color:var(--muted)}
+.g-a .plain .plabel{display:block; font-size:.72rem; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:var(--faint); margin-bottom:.35rem}
 .quiz{padding:0; overflow:hidden}
 .quiz-toggle{width:100%; display:flex; align-items:center; justify-content:space-between; gap:14px; background:none; border:none; color:var(--text); font:inherit; font-weight:800; font-size:17px; padding:22px 24px; cursor:pointer; text-align:left}
-.quiz-chev{flex:0 0 34px; height:34px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; background:linear-gradient(135deg,var(--violet),var(--fuchsia)); color:#14101f; font-size:22px; font-weight:800; transition:transform .25s}
+.quiz-chev{flex:0 0 34px; height:34px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; background:linear-gradient(135deg,var(--rose),var(--amber)); color:#1d1214; font-size:22px; font-weight:800; transition:transform .25s}
 .quiz.open .quiz-chev{transform:rotate(45deg)}
 .quiz-body{display:grid; grid-template-rows:0fr; transition:grid-template-rows .32s ease}
 .quiz.open .quiz-body{grid-template-rows:1fr}
@@ -135,9 +186,9 @@ h2{font-size:clamp(24px,3vw,32px); letter-spacing:-.6px; font-weight:800}
 .quiz-options{display:grid; gap:10px; padding:2px 24px 4px}
 .quiz-options button{display:flex; align-items:center; gap:12px; text-align:left; background:#ffffff08; border:1px solid var(--line); color:var(--text); padding:13px 18px; border-radius:12px; font:inherit; font-size:15.5px; font-weight:700; cursor:pointer}
 .quiz-options button small{color:var(--muted); font-weight:500; font-size:13.5px}
-.quiz-options button:hover{border-color:var(--violet)}
-.quiz-options button.picked{background:#a78bfa1c; border-color:var(--violet)}
-[data-theme="light"] .quiz-options button{background:rgba(20,35,60,.05)}
+.quiz-options button:hover{border-color:var(--rose)}
+.quiz-options button.picked{background:#fb71851c; border-color:var(--rose)}
+[data-theme="light"] .quiz-options button{background:rgba(30,22,18,.05)}
 .quiz-thanks{padding:4px 24px 0; color:var(--muted); font-size:14.5px; margin:12px 0 0}
 .quiz-thanks strong{color:var(--text)}
 .quiz-results{padding:2px 24px 24px}
@@ -146,9 +197,15 @@ h2{font-size:clamp(24px,3vw,32px); letter-spacing:-.6px; font-weight:800}
 .qr-row{display:grid; grid-template-columns:158px 1fr 118px; gap:12px; align-items:center; padding:7px 0; font-size:14.5px}
 .qr-label{font-weight:700; white-space:nowrap}
 .qr-bar{height:8px; border-radius:4px; background:#ffffff12; overflow:hidden}
-.qr-bar span{display:block; height:100%; width:0; background:linear-gradient(90deg,var(--violet),var(--fuchsia)); border-radius:4px; transition:width .6s ease}
+.qr-bar span{display:block; height:100%; width:0; background:linear-gradient(90deg,var(--rose),var(--amber)); border-radius:4px; transition:width .6s ease}
 .qr-pct{color:var(--muted); font-size:13px; text-align:right; white-space:nowrap}
-[data-theme="light"] .qr-bar{background:rgba(20,35,60,.09)}
+[data-theme="light"] .qr-bar{background:rgba(30,22,18,.09)}
+/* back-to-top tile */
+.totop-wrap{text-align:center; margin:30px 0 8px}
+.totop{position:relative; display:inline-flex; align-items:center; gap:14px; background:linear-gradient(180deg,var(--card),var(--card2)); border:none; color:var(--text); font:inherit; font-weight:800; font-size:17px; padding:20px 38px; border-radius:16px; cursor:pointer; transition:transform .25s ease}
+.totop:hover{transform:translateY(-3px)}
+.totop::before{content:""; position:absolute; inset:0; border-radius:16px; padding:2px; background:linear-gradient(120deg,var(--rose),var(--amber),var(--cyan)); -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite:xor; mask-composite:exclude; pointer-events:none}
+.tt-arrow{width:38px; height:38px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; background:linear-gradient(135deg,var(--rose),var(--amber)); color:#1d1214; font-size:20px; font-weight:900; flex:0 0 auto}
 footer{border-top:1px solid var(--line); margin-top:44px; padding:30px 0 46px; color:var(--faint); font-size:13.5px}
 footer strong{color:var(--muted)}
 .rv{opacity:0; transform:translateY(22px); transition:opacity .6s ease, transform .6s ease}
@@ -173,20 +230,23 @@ footer strong{color:var(--muted)}
 <body>
 <div id="progress" aria-hidden="true"><div id="progressFill"></div></div>
 <canvas id="bg-dots" aria-hidden="true"></canvas>
+<div id="bgtext" aria-hidden="true"><div class="bgline" style="top:4%;font-size:6rem;--spd:138s"><div class="bgtrack"><span><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i></span><span aria-hidden="true"><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i></span></div></div><div class="bgline rev" style="top:22%;font-size:3.2rem;--spd:106s"><div class="bgtrack"><span><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i></span><span aria-hidden="true"><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i></span></div></div><div class="bgline" style="top:40%;font-size:7rem;--spd:162s"><div class="bgtrack"><span><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i></span><span aria-hidden="true"><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i></span></div></div><div class="bgline rev mhide" style="top:58%;font-size:2.8rem;--spd:119s"><div class="bgtrack"><span><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i></span><span aria-hidden="true"><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i></span></div></div><div class="bgline mhide" style="top:76%;font-size:6rem;--spd:150s"><div class="bgtrack"><span><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i></span><span aria-hidden="true"><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i></span></div></div><div class="bgline rev mhide" style="top:90%;font-size:3rem;--spd:100s"><div class="bgtrack"><span><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i></span><span aria-hidden="true"><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i></span></div></div></div>
 <div class="shell">
 <aside class="sidebar" id="sidebar" aria-label="Site navigation">
-  <div class="side-brand"><span class="drop">🎥</span> Unboxing Guide</div>
+  <div class="side-brand"><span class="drop">🎬</span> Unboxing Video</div>
   <nav class="sidenav" id="chapternav">
     <span class="side-indicator" id="sideIndicator" aria-hidden="true"></span>
-    <a href="#ch1"><span class="n">01</span>Why film it</a>
-    <a href="#ch2"><span class="n">02</span>Before you start</a>
-    <a href="#ch3"><span class="n">03</span>The opening</a>
-    <a href="#ch4"><span class="n">04</span>Item by item</a>
-    <a href="#ch5"><span class="n">05</span>Damage &amp; finish</a>
-    <a href="#ch6"><span class="n">06</span>Keep the original</a>
-    <a href="#ch7"><span class="n">07</span>Reporting issues</a>
-    <a href="#ch8"><span class="n">08</span>Mistakes to avoid</a>
-    <a href="#ch9"><span class="n">09</span>Master checklist</a>
+    <a href="#ch1"><span class="n">01</span>Why it matters</a>
+    <a href="#ch2"><span class="n">02</span>Before recording</a>
+    <a href="#ch3"><span class="n">03</span>Sealed box first</a>
+    <a href="#ch4"><span class="n">04</span>One continuous take</a>
+    <a href="#ch5"><span class="n">05</span>Every item</a>
+    <a href="#ch6"><span class="n">06</span>Until it's empty</a>
+    <a href="#ch7"><span class="n">07</span>Report fast</a>
+    <a href="#ch8"><span class="n">08</span>Keep the original</a>
+    <a href="#ch9"><span class="n">09</span>Mistakes</a>
+    <a href="#ch10"><span class="n">10</span>Checklist</a>
+    <a href="#ch11"><span class="n">✦</span>Quiz</a>
   </nav>
   <div class="side-progress" aria-hidden="true">
     <div class="sp-head"><span>Reading</span><span id="sidePct">0%</span></div>
@@ -201,163 +261,169 @@ footer strong{color:var(--muted)}
 <div class="side-backdrop" id="sideBackdrop"></div>
 <main>
 <div class="mrail" id="mrail">
-  <a href="#ch1">01 · Why film</a><a href="#ch2">02 · Setup</a><a href="#ch3">03 · Opening</a><a href="#ch4">04 · Items</a><a href="#ch5">05 · Finish</a><a href="#ch6">06 · Keep it</a><a href="#ch7">07 · Report</a><a href="#ch8">08 · Mistakes</a><a href="#ch9">09 · Checklist</a>
+  <a href="#ch1">01 · Why</a><a href="#ch2">02 · Setup</a><a href="#ch3">03 · Sealed box</a><a href="#ch4">04 · One take</a><a href="#ch5">05 · Items</a><a href="#ch6">06 · Empty box</a><a href="#ch7">07 · Report</a><a href="#ch8">08 · Keep it</a><a href="#ch9">09 · Mistakes</a><a href="#ch10">10 · Checklist</a><a href="#ch11">✦ · Quiz</a>
 </div>
 <div class="wrap">
 
   <div class="hero">
-    <span class="kicker">🎥 Documentation guide</span>
-    <h1>How to film a package <span class="grad">unboxing</span></h1>
-    <p class="lead">One continuous video — <strong>sealed box to empty box</strong>. Here's how to create a clear record of what arrived and what condition it was in, so any problem is easy to prove and resolve.</p>
+    <span class="kicker">🎥 Evidence guide</span>
+    <h1>How to film an unboxing video <span class="grad">correctly</span></h1>
+    <p class="lead">One unbroken recording — <strong>sealed box to empty box</strong>. Here's how to capture clear proof of what arrived and the shape it arrived in, so any problem is easy to show and easy to resolve.</p>
   </div>
 
   <div class="excite rv">
-    <div class="excite-emoji">🎉</div>
+    <div class="excite-emoji">🎬</div>
     <div>
-      <h3>They're here!</h3>
-      <p>That rush when the package finally lands on your doorstep — enjoy it! But before you tear into that box, hit record. A few minutes of filming now protects everything you just spent weeks waiting for. Here's exactly how to do it right.</p>
+      <h3>Roll camera before you rip</h3>
+      <p>That moment the box lands on your doorstep is exciting — but the smartest minutes you'll spend are the ones with the camera rolling <strong>before</strong> the tape comes off. This is the full playbook for filming it right, start to finish.</p>
     </div>
   </div>
 
-  <div class="disclaimer"><strong>📋 Educational reference only.</strong> This page teaches general documentation practices for receiving parcels. It is not legal advice and is not affiliated with any seller or carrier.</div>
+  <div class="disclaimer"><strong>📋 Educational reference only.</strong> This page covers general practices for documenting parcel deliveries. It isn't legal advice and isn't connected to any seller or carrier.</div>
 
   <!-- 01 -->
   <section class="chapter" id="ch1">
-    <div class="ch-head"><span class="ch-num">01</span><h2>Why film it</h2></div>
-    <p class="ch-sub">Thirty seconds of setup can save you weeks of arguing later.</p>
+    <div class="ch-head"><span class="ch-num">01</span><h2>Why the video matters</h2></div>
+    <p class="ch-sub">Proof beats memory, every single time.</p>
     <div class="card rv">
-      <p>A proper unboxing video is a <strong>continuous record of four things</strong>: what arrived, how the package was sealed, what was inside, and the condition of everything the moment you received it.</p>
-      <p>That record becomes invaluable the moment anything is <strong>missing, incorrect, damaged, or leaking</strong>. And it establishes a timeline — sealed package → opening → contents revealed → items removed → empty box — that lets someone who wasn't there understand exactly what happened.</p>
-      <div class="warn"><strong>Without that sequence,</strong> a missing item turns into a guessing game: never packed? Wrong quantity? Opened in transit? Removed after delivery? The video doesn't answer everything by itself, but it gives any investigation a solid starting point.</div>
+      <p>A proper unboxing video proves two things: <strong>what showed up, and what shape it was in</strong>. Done right, it lays down a clear timeline — the box sealed on camera, the box opened on camera, each item lifted out and shown, and the empty box shown at the end.</p>
+      <p>That timeline is what turns a dispute into a reviewable record. When something is missing, broken, or leaking, everyone involved can look at the same footage instead of trading guesses.</p>
+      <div class="warn"><strong>Without it, everything is a guess.</strong> Was the item never packed? Damaged on the road? Counted wrong? Taken after delivery? The video can't answer every question by itself — but it gives any investigation solid ground to stand on. Some sellers won't even open a missing-item case without video evidence, so it's worth knowing what yours asks for.</div>
     </div>
   </section>
 
   <!-- 02 -->
   <section class="chapter" id="ch2">
-    <div class="ch-head"><span class="ch-num">02</span><h2>Before you start</h2></div>
-    <p class="ch-sub">Get everything ready <strong>before</strong> the box is open — there's no pause button on evidence.</p>
+    <div class="ch-head"><span class="ch-num">02</span><h2>Before you press record</h2></div>
+    <p class="ch-sub">Set the stage first — there's no pause button on proof.</p>
     <div class="card rv">
       <ul>
-        <li><strong>Charged device with free storage</strong> — a dead battery mid-unboxing ruins the whole point.</li>
-        <li><strong>Good lighting</strong> — labels, seals, and damage must be readable on camera.</li>
-        <li><strong>A clean, stable surface</strong> with room to lay contents out individually.</li>
-        <li><strong>Frame the package and your hands</strong> — both need to stay visible together.</li>
-        <li><strong>Film somewhere private</strong> — avoid spots where other people might wander into the recording.</li>
+        <li><strong>Charged device with plenty of free space</strong> — a dead battery mid-unboxing defeats the entire purpose.</li>
+        <li><strong>Bright, even lighting</strong> — labels, seals, and damage have to be readable on camera.</li>
+        <li><strong>A clear surface</strong> with room to lay items out one by one as you remove them.</li>
+        <li><strong>A wide enough frame</strong> for the package and your hands to stay visible together.</li>
+        <li><strong>Somewhere private</strong> — avoid spots where other people might wander into the recording.</li>
       </ul>
-      <div class="dont"><strong>⛔ The golden rule:</strong> never start recording after the package is already open. The most valuable evidence is a continuous take that begins while the box is still sealed.</div>
+      <div class="dont"><strong>⛔ The golden rule:</strong> the camera rolls while the box is still sealed. Footage that starts after opening has already lost its most valuable seconds.</div>
     </div>
   </section>
 
   <!-- 03 -->
   <section class="chapter" id="ch3">
-    <div class="ch-head"><span class="ch-num">03</span><h2>The opening</h2></div>
-    <p class="ch-sub">Steps 1–4: sealed proof, steady frame, careful opening.</p>
+    <div class="ch-head"><span class="ch-num">03</span><h2>Film the sealed box</h2></div>
+    <p class="ch-sub">Steps 1–3: prove how it arrived before you touch it.</p>
     <div class="grid c2">
-      <div class="card stepcard rv"><div class="sn">1</div><div><h4>Record before you cut</h4><p>Hit record <strong>before</strong> any cuts or tears. Show the whole box first: the outside, shipping labels, tracking info, tape and seals — plus any <strong>damage</strong> (dents, holes, tears, crushed corners, wet areas). Linger on damage from several angles.</p></div></div>
-      <div class="card stepcard rv"><div class="sn">2</div><div><h4>Prove it's still sealed</h4><p>Demonstrate the package hasn't been opened: sealed tape, security seals, shrink wrap, tamper-evident packing. <strong>Rotate slowly</strong> so every side gets its moment on camera.</p></div></div>
-      <div class="card stepcard rv"><div class="sn">3</div><div><h4>Keep it in frame</h4><p>From here on, the box stays on camera. Don't move it off-screen, cover it for long stretches, walk away mid-recording, pull items out of view, or switch to a second recording halfway through.</p></div></div>
-      <div class="card stepcard rv"><div class="sn">4</div><div><h4>Open normally, don't rush</h4><p>Show the inside of the box, padding, documents, and contents as first seen. If anything looks damaged, leaking, or wrong — <strong>show its condition first</strong>, before touching or rearranging it.</p></div></div>
+      <div class="card stepcard rv"><div class="sn">1</div><div><h4>Show the whole exterior</h4><p>Before any cuts or tears, film <strong>every side</strong> of the package: shipping labels, tracking stickers, tape lines, and seals. Pan slowly and give the camera time to focus on each face.</p></div></div>
+      <div class="card stepcard rv"><div class="sn">2</div><div><h4>Linger on any damage</h4><p>Crushed corners, dents, tears, punctures, wet patches, broken seals — <strong>film each one from two or three angles</strong>. This is the damage that happened before you, so capture it before you.</p></div></div>
+      <div class="card stepcard rv"><div class="sn">3</div><div><h4>Prove the seal is intact</h4><p>Show the tape is uncut, the seals unbroken, the wrap undisturbed. <strong>Rotate the box slowly</strong> so every side gets its moment — an unbroken seal on camera is what proves nobody opened it before you.</p></div></div>
+      <div class="card stepcard rv"><div class="sn">4</div><div><h4>Then open it on camera</h4><p>Cut the tape and open the box <strong>without leaving the frame</strong>. Show the inside as first seen — padding, documents, and contents exactly as they sat when the box was opened.</p></div></div>
     </div>
   </section>
 
   <!-- 04 -->
   <section class="chapter" id="ch4">
-    <div class="ch-head"><span class="ch-num cool">04</span><h2>Item by item</h2></div>
-    <p class="ch-sub">Steps 5–6: slow down — this is where the details live.</p>
+    <div class="ch-head"><span class="ch-num cool">04</span><h2>One continuous take</h2></div>
+    <p class="ch-sub">No pauses. No restarts. No edits.</p>
     <div class="card rv">
-      <h3>📦 One at a time</h3>
-      <p>Remove each item <strong>individually</strong> and hold it close enough that its identifying details read clearly on camera:</p>
-      <ul>
-        <li>Product name and description</li>
-        <li>Labels, quantities, lot or batch numbers</li>
-        <li>Expiration dates and packaging condition</li>
-      </ul>
-      <p>Give the camera <strong>time to focus</strong>. Small text? Bring the item closer or adjust the camera — don't just wave it past the lens.</p>
-    </div>
-    <div class="card rv" style="margin-top:16px">
-      <h3>🔢 Verify quantities</h3>
-      <p>Got several identical items? <strong>Group them together in frame</strong> so the count is undeniable — and count out loud while recording: <em>"one, two, three, four."</em></p>
-      <div class="dont"><strong>⛔ Count looks off?</strong> Don't stop recording. Finish the entire unboxing so the complete contents are documented, then deal with the discrepancy.</div>
+      <p>Film the entire unboxing as <strong>a single unbroken recording</strong>. Don't pause it, don't stop and start a second clip, and don't cut sections out afterward.</p>
+      <p>Here's why that matters: one continuous file proves the items on screen at the beginning are the <strong>same items</strong> that came out of the box during the recording. Separate clips — or photos taken after everything's already out — can't make that link.</p>
+      <div class="warn"><strong>Keep it all in frame.</strong> The package and its contents should stay in the camera's view for the whole take, and your hands shouldn't cover up labels or important details while you're showing them.</div>
     </div>
   </section>
 
   <!-- 05 -->
   <section class="chapter" id="ch5">
-    <div class="ch-head"><span class="ch-num">05</span><h2>Damage &amp; the finish</h2></div>
-    <p class="ch-sub">Steps 7–9: document problems, then prove the box is empty.</p>
-    <div class="grid c2">
-      <div class="card rv">
-        <h3>🔍 Document every problem</h3>
-        <p>Crushed packaging, broken containers, tears, leaks, missing labels, broken seals, wrong items, wrong quantities, moisture damage — <strong>show each one from several angles</strong> and take your time.</p>
-        <p>Keep the damaged item <strong>with its original packaging</strong> instead of throwing anything away immediately.</p>
-      </div>
-      <div class="card rv">
-        <h3>🏁 Don't stop early</h3>
-        <p>Found one problem? <strong>Keep going.</strong> There could be a second issue hiding behind the first — a missing item <em>and</em> a damaged one, for example. Only a complete video proves the full story.</p>
-      </div>
+    <div class="ch-head"><span class="ch-num">05</span><h2>Every item on camera</h2></div>
+    <p class="ch-sub">Slow down — the details are the whole point.</p>
+    <div class="card rv">
+      <h3>📦 One at a time</h3>
+      <p>Lift each item out <strong>individually</strong> and hold it up long enough for the camera to lock focus. Make sure the identifying details read clearly:</p>
+      <ul>
+        <li>Product name and description</li>
+        <li>Labels, quantities, and lot or batch numbers</li>
+        <li>Packaging condition and any dates printed on it</li>
+      </ul>
+      <p>Small print? <strong>Bring the item closer</strong> — don't just wave it past the lens and hope for the best.</p>
     </div>
     <div class="card rv" style="margin-top:16px">
-      <h3>📭 Show the empty box</h3>
-      <p>Once everything is out, film the <strong>empty interior</strong> — move packing material, inserts, and bags aside so it's obvious nothing is hiding underneath. The goal: establish on camera that the package was <strong>completely emptied during the recording</strong>.</p>
+      <h3>🔢 Count out loud</h3>
+      <p>Several identical items? <strong>Group them together in frame</strong> so the number is undeniable — and count aloud while recording: <em>"one, two, three, four."</em> A visible pile plus a spoken count leaves no room for argument.</p>
+    </div>
+    <div class="card rv" style="margin-top:16px">
+      <h3>🔍 Give damage extra time</h3>
+      <p>Something arrived broken, leaking, opened, or just wrong? <strong>Spend extra time on it from several angles</strong> before moving on. Don't assume it's "obvious from a distance" — if a detail could matter later, get it close to the lens and make sure it's sharp.</p>
     </div>
   </section>
 
   <!-- 06 -->
   <section class="chapter" id="ch6">
-    <div class="ch-head"><span class="ch-num">06</span><h2>Keep the original</h2></div>
-    <p class="ch-sub">Step 10: your footage is only evidence if it still exists.</p>
+    <div class="ch-head"><span class="ch-num">06</span><h2>Until the box is empty</h2></div>
+    <p class="ch-sub">Don't stop until there's nothing left to film.</p>
     <div class="card rv">
-      <p><strong>Don't delete or edit the original recording.</strong> Screenshots and trimmed clips are handy for sharing, but they're no substitute for the complete, unedited file.</p>
-      <p>Keep everything together somewhere safe:</p>
-      <ul>
-        <li>The <strong>original full-length video</strong></li>
-        <li>Photos of damage, labels, and individual items</li>
-        <li>Shipping information and tracking details</li>
-        <li>Your order confirmation or invoice</li>
-        <li>Any correspondence about the issue</li>
-      </ul>
-      <div class="warn"><strong>Edited versions are fine</strong> for sending to a seller — just never let the edited copy become the <em>only</em> copy.</div>
+      <p>Keep recording until <strong>every last item is out</strong> of the package. Then turn the camera on the inside of the box — shift the padding, inserts, and bags aside so it's obvious nothing is hiding underneath.</p>
+      <p>This closing shot is what proves the items you showed are <strong>everything that was inside</strong>. The finished video should tell one clean story: sealed at the start, opened on camera, items shown one by one, empty box at the end.</p>
+      <div class="dont"><strong>⛔ Found a problem halfway?</strong> Don't stop there. Finish the full unboxing first — there could be a second issue hiding behind the first, and only a complete video proves the whole story.</div>
     </div>
   </section>
 
   <!-- 07 -->
   <section class="chapter" id="ch7">
-    <div class="ch-head"><span class="ch-num cool">07</span><h2>Reporting an issue</h2></div>
-    <p class="ch-sub">If something's wrong, report it fast — and bring receipts.</p>
+    <div class="ch-head"><span class="ch-num cool">07</span><h2>Report problems fast</h2></div>
+    <p class="ch-sub">Quick, factual, and with the footage attached.</p>
     <div class="card rv">
-      <p>Contact the seller or representative <strong>as soon as reasonably possible</strong>. Keep the message factual and concise, and include:</p>
+      <p>If anything is missing, incorrect, damaged, or leaking, contact the seller or their representative <strong>as soon as you reasonably can</strong>. Keep the message short and factual, and include:</p>
       <ul>
-        <li>What you received</li>
-        <li>What appears to be wrong</li>
-        <li>When the package arrived</li>
+        <li>What you received and when the package arrived</li>
+        <li>Exactly what appears to be wrong</li>
         <li>That you filmed the <strong>complete unboxing</strong></li>
-        <li>The photos and video</li>
-        <li>Any order or shipment details they need</li>
+        <li>The video and supporting photos</li>
+        <li>Any order or tracking details they need</li>
       </ul>
-      <p>Damage? <strong>Describe it precisely.</strong> Wrong item? State clearly <strong>what you expected</strong> versus <strong>what actually arrived</strong>.</p>
-      <div class="msgbox">"Hi — my package arrived today and one expected item seems to be missing. I filmed the complete unboxing from the sealed box to the empty box, and I've attached the video and photos. Let me know what else you need to look into this."</div>
+      <p>Wrong item? State clearly <strong>what you expected</strong> versus <strong>what actually arrived</strong>. Damage? Describe it precisely instead of saying "it's broken."</p>
+      <div class="msgbox">"Hi — my parcel arrived today and one of the items I ordered seems to be missing. I filmed the complete unboxing from the sealed box through to the empty box, and I've attached the video and photos. Please let me know what else you need to look into this."</div>
+      <p style="margin-top:12px">They may need time to check with the warehouse or shipping team and review the footage — give them what they ask for, and <strong>hang onto your originals</strong> until the issue is fully resolved.</p>
     </div>
   </section>
 
   <!-- 08 -->
   <section class="chapter" id="ch8">
-    <div class="ch-head"><span class="ch-num">08</span><h2>Mistakes to avoid</h2></div>
-    <p class="ch-sub">Eight ways people accidentally ruin perfectly good evidence.</p>
-    <div class="grid c3">
-      <div class="card mistake rv"><span class="x">❌</span><h4>Starting after opening</h4><p>The box's original sealed condition is gone forever.</p></div>
-      <div class="card mistake rv"><span class="x">❌</span><h4>Stopping halfway</h4><p>Any gap in recording is a gap anyone can question.</p></div>
-      <div class="card mistake rv"><span class="x">❌</span><h4>Going off-camera</h4><p>What the lens never saw might as well never have happened.</p></div>
-      <div class="card mistake rv"><span class="x">❌</span><h4>Filming too far away</h4><p>Labels and quantities become unreadable mush.</p></div>
-      <div class="card mistake rv"><span class="x">❌</span><h4>Moving too fast</h4><p>Blurry fly-bys capture nothing usable.</p></div>
-      <div class="card mistake rv"><span class="x">❌</span><h4>Ditching packaging early</h4><p>Boxes and padding can hold proof of damage or tampering.</p></div>
-      <div class="card mistake rv"><span class="x">❌</span><h4>Photos only</h4><p>Still images can't show the continuous timeline a video does.</p></div>
-      <div class="card mistake rv"><span class="x">❌</span><h4>Editing the only copy</h4><p>Always keep the raw original alongside any trimmed version.</p></div>
+    <div class="ch-head"><span class="ch-num">08</span><h2>Keep the original</h2></div>
+    <p class="ch-sub">The raw file is the evidence. Everything else is a copy.</p>
+    <div class="card rv">
+      <p><strong>Don't delete the original recording</strong> — and don't trim it down just to make it small enough to send. If the file is too large to attach directly, use a file-sharing link instead of cutting the video.</p>
+      <p>Keep the whole package together somewhere safe:</p>
+      <ul>
+        <li>The <strong>original full-length, unedited video</strong></li>
+        <li>Photos of labels, quantities, and any damage</li>
+        <li>Tracking details and shipping information</li>
+        <li>Your order confirmation or invoice</li>
+        <li>Any messages exchanged about the issue</li>
+      </ul>
+      <div class="warn"><strong>Trimmed clips are fine for sharing</strong> — just never let the edited version become the <em>only</em> version you have.</div>
+      <p>One more thing: make sure the footage is actually usable. A steady camera and good lighting make the difference between proof and mush. Odds are you'll never need the video — but having proof you don't need beats needing proof you don't have.</p>
     </div>
   </section>
 
   <!-- 09 -->
   <section class="chapter" id="ch9">
-    <div class="ch-head"><span class="ch-num">09</span><h2>Master checklist</h2></div>
+    <div class="ch-head"><span class="ch-num">09</span><h2>Mistakes that wreck it</h2></div>
+    <p class="ch-sub">Nine ways good footage goes bad.</p>
+    <div class="grid c3">
+      <div class="card mistake rv"><span class="x">❌</span><h4>Rolling after opening</h4><p>The sealed condition is gone forever — the most valuable seconds are lost.</p></div>
+      <div class="card mistake rv"><span class="x">❌</span><h4>Drifting out of frame</h4><p>If the lens never saw it, it might as well never have happened.</p></div>
+      <div class="card mistake rv"><span class="x">❌</span><h4>Stopping halfway</h4><p>Every gap in the recording is a gap someone can question.</p></div>
+      <div class="card mistake rv"><span class="x">❌</span><h4>Pausing or editing</h4><p>Cuts break the unbroken chain the whole video is built on.</p></div>
+      <div class="card mistake rv"><span class="x">❌</span><h4>Rushing past items</h4><p>Blurry fly-bys capture nothing usable — slow down.</p></div>
+      <div class="card mistake rv"><span class="x">❌</span><h4>Filming too far back</h4><p>Labels and quantities turn to unreadable mush.</p></div>
+      <div class="card mistake rv"><span class="x">❌</span><h4>Skipping the count</h4><p>"A pile of them" proves nothing — group, show, count aloud.</p></div>
+      <div class="card mistake rv"><span class="x">❌</span><h4>Deleting the original</h4><p>The raw file is the evidence. Keep it until everything is resolved.</p></div>
+      <div class="card mistake rv"><span class="x">❌</span><h4>Photos only</h4><p>Still images can't show the unbroken timeline a video does.</p></div>
+    </div>
+  </section>
+
+  <!-- 10 checklist -->
+  <section class="chapter" id="ch10">
+    <div class="ch-head"><span class="ch-num">10</span><h2>Master checklist</h2></div>
     <p class="ch-sub">Run through this every time. Future-you says thanks.</p>
     <div class="grid c3">
       <div class="card rv">
@@ -399,13 +465,13 @@ footer strong{color:var(--muted)}
     </div>
   </section>
 
-  <!-- quiz -->
-  <section class="chapter" id="ch10">
+  <!-- 11 quiz -->
+  <section class="chapter" id="ch11">
     <div class="ch-head"><span class="ch-num">✦</span><h2>Quick quiz</h2></div>
     <p class="ch-sub">One question — how useful was this guide?</p>
     <div class="card quiz rv" id="quizCard">
       <button class="quiz-toggle" id="quizToggle" aria-expanded="false">
-        <span>How useful was this unboxing guide?</span>
+        <span>How useful was this unboxing video guide?</span>
         <span class="quiz-chev" aria-hidden="true">+</span>
       </button>
       <div class="quiz-body">
@@ -414,7 +480,6 @@ footer strong{color:var(--muted)}
             <button data-v="4">⭐ Very useful <small>exactly what I needed</small></button>
             <button data-v="3">👍 Useful <small>cleared things up</small></button>
             <button data-v="2">🙂 Okay <small>does the job</small></button>
-            <button data-v="1">😐 Not useful <small>didn't help</small></button>
           </div>
           <p class="quiz-thanks" id="quizThanks" hidden></p>
           <div class="quiz-results" id="quizResults" hidden>
@@ -426,11 +491,15 @@ footer strong{color:var(--muted)}
     </div>
   </section>
 
+  <div class="totop-wrap rv">
+    <button class="totop" id="toTop" aria-label="Back to the top"><span class="tt-arrow">↑</span><span>Back to the top</span></button>
+  </div>
+
 </div><!-- /wrap -->
 <footer>
   <div class="wrap">
-    <div class="disclaimer"><strong>📋 Educational reference only.</strong> This page teaches general documentation practices for receiving parcels. It is not legal advice and is not affiliated with any seller or carrier.</div>
-    <p><strong>How to Film a Package Unboxing</strong> — one continuous recording, sealed box to empty box: setup, the opening sequence, item-by-item documentation, quantity checks, damage evidence, keeping the original file, reporting issues, common mistakes, and a master checklist.</p>
+    <div class="disclaimer"><strong>📋 Educational reference only.</strong> This page covers general practices for documenting parcel deliveries. It isn't legal advice and isn't connected to any seller or carrier.</div>
+    <p><strong>How to Film an Unboxing Video Correctly</strong> — one unbroken recording, sealed box to empty box: setup, filming the sealed package, the continuous take, item-by-item documentation, quantity checks, damage evidence, reporting problems, keeping the original file, common mistakes, and a terminology glossary.</p>
   </div>
 </footer>
 </main>
@@ -453,11 +522,11 @@ const REDUCED=matchMedia('(prefers-reduced-motion: reduce)').matches;
   addEventListener('scroll',()=>{ if(!tick){tick=true; requestAnimationFrame(up);} },{passive:true});
   addEventListener('resize',up); up();
 })();
-/* ambient dots: violet / fuchsia / cyan */
+/* ambient dots: rose / amber / cyan */
 (function(){
   const c=$('bg-dots'); if(!c) return;
   const x=c.getContext('2d');
-  const COLS=['#a78bfa','#e879f9','#22d3ee','#8b5cf6','#38bdf8'];
+  const COLS=['#fb7185','#fbbf24','#22d3ee','#f43f5e','#f59e0b'];
   let W,H,dots=[];
   function size(){ W=c.width=innerWidth; H=c.height=innerHeight;
     const n=Math.max(40,Math.min(150,Math.floor(W*H/16000)));
@@ -561,15 +630,48 @@ function moveIndicator(){
   btn.onclick=()=>{
     if(light()) document.documentElement.removeAttribute('data-theme');
     else document.documentElement.setAttribute('data-theme','light');
-    try{ localStorage.setItem('unbox-theme',light()?'light':'dark'); }catch(e){}
+    try{ localStorage.setItem('unboxfilm-theme',light()?'light':'dark'); }catch(e){}
     paint(); btn.classList.add('dim');
   };
   paint();
 })();
+/* glossary accordion */
+document.querySelectorAll(".g-item").forEach(function(item){
+  var q=item.querySelector(".g-q"),a=item.querySelector(".g-a");
+  q.addEventListener("click",function(){
+    var open=item.classList.contains("open");
+    document.querySelectorAll(".g-item.open").forEach(function(o){
+      o.classList.remove("open");
+      o.querySelector(".g-a").style.maxHeight="0px";
+      o.querySelector(".g-q").setAttribute("aria-expanded","false");
+    });
+    if(!open){
+      item.classList.add("open");
+      q.setAttribute("aria-expanded","true");
+      requestAnimationFrame(function(){a.style.maxHeight=a.scrollHeight+"px";});
+    }
+  });
+});
+/* back to top: smooth animated scroll */
+(function(){
+  const btn=$('toTop'); if(!btn) return;
+  btn.onclick=()=>{
+    const sy=scrollY;
+    cancelAnimationFrame(scrollAnim);
+    if(REDUCED||sy<4){ scrollTo(0,0); return; }
+    const dur=Math.min(1100,420+sy*.32), t0=performance.now();
+    const ez=k=>k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2;
+    function fr(now){
+      const p=Math.min(1,(now-t0)/dur);
+      scrollTo(0,sy*(1-ez(p)));
+      if(p<1) scrollAnim=requestAnimationFrame(fr);
+    }
+    scrollAnim=requestAnimationFrame(fr);
+  };
+})();
 /* rating quiz */
 (function(){
-  const KEY='unbox-quiz-pick', VKEY='unbox-quiz-votes';
-  const OPTS=[{v:'4',icon:'⭐',label:'Very useful'},{v:'3',icon:'👍',label:'Useful'},{v:'2',icon:'🙂',label:'Okay'},{v:'1',icon:'😐',label:'Not useful'}];
+  const KEY='unboxfilm-quiz-pick', VKEY='unboxfilm-quiz-votes';  const OPTS=[{v:'4',icon:'⭐',label:'Very useful'},{v:'3',icon:'👍',label:'Useful'},{v:'2',icon:'🙂',label:'Okay'}];
   const card=$('quizCard'), tog=$('quizToggle'), opts=$('quizOptions'), thx=$('quizThanks'),
         res=$('quizResults'), tot=$('qrTotal'), rows=$('qrRows');
   if(!card) return;
